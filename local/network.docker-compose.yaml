@@ -1,0 +1,5 @@
+version: '3'
+
+networks:
+  frontend2backend:
+    driver: bridge

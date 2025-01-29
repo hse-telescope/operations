@@ -1,4 +1,7 @@
 version: '3'
 
 include:
+  - backend.docker-compose.yaml
+  - db.docker-compose.yaml
   - frontend.docker-compose.yaml
+  - network.docker-compose.yaml
