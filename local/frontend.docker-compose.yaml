@@ -5,5 +5,7 @@ services:
     image: olegdayo/frontend:${FRONTEND_TAG}
     ports:
       - '3000:3000'
+    depends_on:
+      - mvp-backend
     networks:
       - frontend2backend
