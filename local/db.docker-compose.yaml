@@ -15,8 +15,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '2'
-          memory: 4G
+          cpus: '0.5'
+          memory: 128M
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U user -d graphs" ]
       interval: 5s
