@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: olegdayo/frontend
   pullPolicy: IfNotPresent
-  tag: 68f8dad82b5c7ffc8c902fe4ef74068dedf211e9
+  tag: 74b9222a77ddc0d09e6fbe1a70840883279bccd0
 
 imagePullSecrets: []
 
