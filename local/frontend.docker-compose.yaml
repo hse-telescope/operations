@@ -3,6 +3,11 @@ version: '3'
 services:
   frontend:
     image: olegdayo/frontend:${FRONTEND_TAG}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '16M'
     ports:
       - '80:80'
     depends_on:
