@@ -18,5 +18,5 @@ jobs:
           key: ${{ secrets.PRODUCTION_KEY }}
           script: |
                     cd ${HOME}/hse-telescope/operations
-                    make decompose
-                    make compose
+                    sudo make decompose
+                    sudo make compose
