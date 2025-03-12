@@ -6,8 +6,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.1'
-          memory: '16M'
+          cpus: '0.2'
+          memory: '64M'
     ports:
       - '443:443'
     depends_on:
