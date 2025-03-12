@@ -23,6 +23,6 @@ jobs:
                     cd ${HOME}/hse-telescope/operations
                     git fetch
                     git pull
-                    docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+                    sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
                     sudo make decompose
                     sudo make compose
