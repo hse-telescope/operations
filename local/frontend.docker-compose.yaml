@@ -9,7 +9,7 @@ services:
           cpus: '0.1'
           memory: '16M'
     ports:
-      - '80:80'
+      - '443:443'
     depends_on:
       - mvp-backend
     networks:
