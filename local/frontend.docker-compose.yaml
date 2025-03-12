@@ -9,7 +9,7 @@ services:
           cpus: '0.1'
           memory: '64M'
     volumes:
-      - ./app/docker/nginx/ssl:/etc/nginx/ssl
+      - /opt/nginx/ssl:/etc/nginx/ssl
     ports:
       - '443:443'
     depends_on:
