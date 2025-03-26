@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mvp-backend:
+    image: olegdayo/mvp-backend:${MVP_BACKEND_TAG}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '64M'
+    ports:
+      - '8080:8080'
+    depends_on:
+      mvp-db:
+        condition: service_healthy
+    networks:
+      - frontend2backend
+      - backend2db

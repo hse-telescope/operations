@@ -1,7 +1,13 @@
+# Examples: 
+# compose env=production
+# compose env=staging
 .PHONY: compose
 compose:
-	docker compose -f ./local/docker-compose.yaml --env-file .env up -d
+	docker compose -f ./compose/${env}/docker-compose.yaml up -d
 
+# Examples: 
+# decompose env=production
+# decompose env=staging
 .PHONY: decompose
 decompose:
-	docker compose -f ./local/docker-compose.yaml down
+	docker compose -f ./compose/${env}/docker-compose.yaml down
