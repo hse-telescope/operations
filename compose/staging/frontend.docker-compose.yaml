@@ -15,4 +15,4 @@ services:
     depends_on:
       - mvp-backend
     networks:
-      - frontend2backend
+      - frontend2gateway
