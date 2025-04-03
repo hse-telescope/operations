@@ -5,3 +5,5 @@ networks:
     driver: bridge
   backend2db:
     driver: bridge
+  core2s3:
+    driver: bridge
