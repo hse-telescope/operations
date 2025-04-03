@@ -9,7 +9,7 @@ services:
           cpus: '0.1'
           memory: '64M'
     depends_on:
-      mvp-db:
+      auth-db:
         condition: service_healthy
     networks:
       - gateway2auth
@@ -23,8 +23,10 @@ services:
           cpus: '0.1'
           memory: '64M'
     depends_on:
-      mvp-db:
+      core-db:
         condition: service_healthy
+      # core-s3:
+      #   condition: service_healthy
     networks:
       - gateway2core
       - core2db
@@ -38,8 +40,8 @@ services:
           cpus: '0.1'
           memory: '64M'
     depends_on:
-      mvp-db:
-        condition: service_healthy
+      - auth
+      - core
     networks:
       - gateway2auth
       - gateway2core
