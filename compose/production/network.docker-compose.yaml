@@ -1,7 +1,15 @@
 version: '3'
 
 networks:
-  frontend2backend:
+  frontend2gateway:
     driver: bridge
-  backend2db:
+  gateway2auth:
+    driver: bridge
+  gateway2core:
+    driver: bridge
+  auth2db:
+    driver: bridge
+  core2db:
+    driver: bridge
+  core2s3:
     driver: bridge

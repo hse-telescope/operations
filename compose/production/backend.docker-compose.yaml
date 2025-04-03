@@ -1,18 +1,45 @@
 version: '3'
 
 services:
-  mvp-backend:
-    image: olegdayo/mvp-backend:${MVP_BACKEND_TAG}
+  auth:
+    image: olegdayo/auth:${AUTH_TAG}
     deploy:
       resources:
         limits:
           cpus: '0.1'
           memory: '64M'
-    ports:
-      - '8080:8080'
     depends_on:
       mvp-db:
         condition: service_healthy
     networks:
-      - frontend2backend
-      - backend2db
+      - gateway2auth
+      - auth2db
+
+  core:
+    image: olegdayo/auth:${CORE_TAG}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '64M'
+    depends_on:
+      mvp-db:
+        condition: service_healthy
+    networks:
+      - gateway2core
+      - core2db
+      - core2s3
+
+  gateway:
+    image: olegdayo/gateway:${GATEWAY_TAG}
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '64M'
+    depends_on:
+      mvp-db:
+        condition: service_healthy
+    networks:
+      - gateway2auth
+      - gateway2core
