@@ -3,6 +3,7 @@ version: '3'
 services:
   auth:
     image: olegdayo/auth:${AUTH_TAG}
+    command: ["./compose/production/configs/auth.yaml"]
     deploy:
       resources:
         limits:
@@ -17,6 +18,7 @@ services:
 
   core:
     image: olegdayo/auth:${CORE_TAG}
+    command: ["./compose/production/configs/core.yaml"]
     deploy:
       resources:
         limits:
@@ -34,6 +36,7 @@ services:
 
   gateway:
     image: olegdayo/gateway:${GATEWAY_TAG}
+    command: ["./compose/production/configs/gateway.yaml"]
     deploy:
       resources:
         limits:
