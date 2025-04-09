@@ -3,7 +3,9 @@ version: '3'
 services:
   auth:
     image: olegdayo/auth:${AUTH_TAG}
-    command: ["./compose/staging/configs/auth.yaml"]
+    command: ["./auth.yaml"]
+    volumes:
+      - './configs/auth.yaml:/app/auth.yaml'
     deploy:
       resources:
         limits:
@@ -18,7 +20,9 @@ services:
 
   core:
     image: olegdayo/core:${CORE_TAG}
-    command: ["./compose/staging/configs/core.yaml"]
+    command: ["./core.yaml"]
+    volumes:
+      - './configs/core.yaml:/app/core.yaml'
     deploy:
       resources:
         limits:
@@ -36,7 +40,9 @@ services:
 
   gateway:
     image: olegdayo/gateway:${GATEWAY_TAG}
-    command: ["./compose/staging/configs/gateway.yaml"]
+    command: ["./gateway.yaml"]
+    volumes:
+      - './configs/gateway.yaml:/app/gateway.yaml'
     deploy:
       resources:
         limits:
