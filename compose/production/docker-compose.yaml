@@ -5,4 +5,4 @@ include:
   - db.docker-compose.yaml
   - frontend.docker-compose.yaml
   - network.docker-compose.yaml
-  - s3.docker-compose.yaml
+  # - s3.docker-compose.yaml

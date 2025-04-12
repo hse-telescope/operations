@@ -8,8 +8,8 @@ services:
         limits:
           cpus: '0.1'
           memory: '64M'
-    volumes:
-      - /opt/nginx/ssl:/etc/nginx/ssl
+    # volumes:
+    #   - /opt/nginx/ssl:/etc/nginx/ssl
     ports:
       - '443:443'
     depends_on:

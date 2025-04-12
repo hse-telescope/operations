@@ -54,3 +54,4 @@ services:
     networks:
       - gateway2auth
       - gateway2core
+      - frontend2gateway

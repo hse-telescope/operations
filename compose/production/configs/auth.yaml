@@ -8,7 +8,7 @@ db:
   port: 5432
   database: "users"
   ssl: "disable"
-  migrations_path: file://migrations
+  migrations_path: "github://hse-telescope/auth/migrations"
 
 clients:
   example:
