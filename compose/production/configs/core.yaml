@@ -6,7 +6,7 @@ db:
   password: "password"
   ip: "core-db"
   port: 5432
-  database: "graphs"
+  database: "db"
   ssl: "disable"
   migrations_path: "github://hse-telescope/core/migrations"
 

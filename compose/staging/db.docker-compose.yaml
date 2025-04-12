@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: users
+      POSTGRES_DB: db
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - auth-data:/var/lib/postgresql/data
@@ -18,7 +18,7 @@ services:
           cpus: '0.5'
           memory: 128M
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U user -d users" ]
+      test: [ "CMD-SHELL", "pg_isready -U user -d db" ]
       interval: 5s
       timeout: 5s
       retries: 100
@@ -32,7 +32,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: graphs
+      POSTGRES_DB: db
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - auth-data:/var/lib/postgresql/data
@@ -43,7 +43,7 @@ services:
           cpus: '0.5'
           memory: 128M
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U user -d graphs" ]
+      test: [ "CMD-SHELL", "pg_isready -U user -d db" ]
       interval: 5s
       timeout: 5s
       retries: 100
