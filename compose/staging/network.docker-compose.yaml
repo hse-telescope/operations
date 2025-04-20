@@ -3,6 +3,8 @@ version: '3'
 networks:
   frontend2gateway:
     driver: bridge
+  frontend2core:
+    driver: bridge
   gateway2auth:
     driver: bridge
   gateway2core:

@@ -15,4 +15,5 @@ services:
     depends_on:
       - gateway
     networks:
+      - frontend2core
       - frontend2gateway
