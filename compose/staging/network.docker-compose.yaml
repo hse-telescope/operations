@@ -13,5 +13,9 @@ networks:
     driver: bridge
   core2db:
     driver: bridge
-  core2s3:
+  queue2storage:
+    driver: bridge
+  auth2queue:
+    driver: bridge
+  queue2emailer:
     driver: bridge

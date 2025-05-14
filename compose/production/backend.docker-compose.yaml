@@ -37,7 +37,6 @@ services:
       - frontend2core
       - gateway2core
       - core2db
-      - core2s3
 
   gateway:
     image: olegdayo/gateway:${GATEWAY_TAG}
