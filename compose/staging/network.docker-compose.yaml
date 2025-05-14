@@ -19,3 +19,5 @@ networks:
     driver: bridge
   queue2emailer:
     driver: bridge
+  ui2queue:
+    driver: bridge

@@ -35,6 +35,7 @@ services:
       - queue2storage
       - auth2queue
       - queue2emailer
+      - ui2queue
 
 volumes:
   kafka-storage:
