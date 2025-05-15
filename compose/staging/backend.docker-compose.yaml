@@ -4,6 +4,8 @@ services:
   auth:
     image: olegdayo/auth:${AUTH_TAG}
     command: ["./auth.yaml"]
+    ports:
+      - '8081:8080'
     volumes:
       - './configs/auth.yaml:/app/auth.yaml'
     deploy:
@@ -21,6 +23,8 @@ services:
   core:
     image: olegdayo/core:${CORE_TAG}
     command: ["./core.yaml"]
+    ports:
+      - '8082:8080'
     volumes:
       - './configs/core.yaml:/app/core.yaml'
     deploy:
@@ -41,6 +45,8 @@ services:
   gateway:
     image: olegdayo/gateway:${GATEWAY_TAG}
     command: ["./gateway.yaml"]
+    ports:
+      - '8080:8080'
     volumes:
       - './configs/gateway.yaml:/app/gateway.yaml'
     deploy:
