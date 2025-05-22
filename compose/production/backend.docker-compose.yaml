@@ -15,6 +15,7 @@ services:
       auth-db:
         condition: service_healthy
       kafka:
+        condition: service_healthy
     networks:
       - gateway2auth
       - auth2db
