@@ -17,7 +17,7 @@ networks:
     driver: bridge
   auth2queue:
     driver: bridge
-  queue2emailer:
+  emailer2queue:
     driver: bridge
   ui2queue:
     driver: bridge

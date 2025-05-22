@@ -14,9 +14,11 @@ services:
     depends_on:
       auth-db:
         condition: service_healthy
+      kafka:
     networks:
       - gateway2auth
       - auth2db
+      - auth2queue
 
   core:
     image: olegdayo/core:${CORE_TAG}
@@ -55,3 +57,18 @@ services:
       - gateway2auth
       - gateway2core
       - frontend2gateway
+
+  emailer:
+    image: olegdayo/emailer:${GATEWAY_TAG}
+    command: ["./emailer.yaml"]
+    volumes:
+      - './configs/emailer.yaml:/app/emailer.yaml'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '64M'
+    depends_on:
+      - kafka
+    networks:
+      - emailer2queue
