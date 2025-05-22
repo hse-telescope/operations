@@ -60,7 +60,7 @@ services:
       - frontend2gateway
 
   emailer:
-    image: olegdayo/emailer:${GATEWAY_TAG}
+    image: olegdayo/emailer:${EMAILER_TAG}
     command: ["./emailer.yaml"]
     volumes:
       - './configs/emailer.yaml:/app/emailer.yaml'
