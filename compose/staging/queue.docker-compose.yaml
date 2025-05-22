@@ -34,7 +34,7 @@ services:
     networks:
       - queue2storage
       - auth2queue
-      - queue2emailer
+      - emailer2queue
       - ui2queue
 
 volumes:
