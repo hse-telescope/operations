@@ -1,6 +1,8 @@
 name: Sync Stands
 
 on:
+  schedule:
+    - cron: '0 12 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -22,9 +24,13 @@ jobs:
       - name: Sync Stands
         run: |
           rm ./compose/staging/.env
+          rm -r ./compose/staging/configs
+
           cp ./compose/production/.env ./compose/staging/.env
+          cp ./compose/production/configs ./compose/staging/configs
 
           git add ./compose/staging/.env
+          git add ./compose/staging/configs
 
           # If script has been run twice on the same commit
           git commit --allow-empty -m "Tag update: ${{ github.sha }}"
