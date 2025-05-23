@@ -1,0 +1,31 @@
+name: Sync Stands
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v4
+        with:
+          repository: hse-telescope/operations
+          ref: master
+          token: ${{ secrets.OPERATIONS_REPO_UPDATE }}
+
+      - name: Setup Git Config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Sync Stands
+        run: |
+          rm ./compose/staging/.env
+          cp ./compose/production/.env ./compose/staging/.env
+
+          git add ./compose/staging/.env
+
+          # If script has been run twice on the same commit
+          git commit --allow-empty -m "Tag update: ${{ github.sha }}"
+          git push
