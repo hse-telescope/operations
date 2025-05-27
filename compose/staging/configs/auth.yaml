@@ -8,7 +8,12 @@ db:
   port: 5432
   database: "db"
   ssl: "disable"
-  migrations_path: github://hse-telescope/auth/migrations#ae5fc54fe27380ce3ef9cdc72a8b04a7b2d1acd6
+  migrations_path: github://hse-telescope/auth/migrations#d4385993ceeb0c9b9ef81ebc493c0a639553bba3
+
+queue_credentials:
+    urls:
+      - kafka:9092
+    topic: send-email-events
 
 jwt_secret: |
   -----BEGIN RSA PRIVATE KEY-----
