@@ -8,7 +8,7 @@ db:
   port: 5432
   database: "db"
   ssl: "disable"
-  migrations_path: github://hse-telescope/auth/migrations#34c4c19939750f496a8f9043d587e3b9c1c4481c
+  migrations_path: github://hse-telescope/auth/migrations#88e1f81cac75663dca1d9d0e3659c862d9a506ff
 
 jwt_secret: |
   -----BEGIN RSA PRIVATE KEY-----
