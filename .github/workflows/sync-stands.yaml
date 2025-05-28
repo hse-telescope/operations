@@ -28,7 +28,7 @@ jobs:
           rm -r ./compose/staging/configs
 
           cp ./compose/production/.env ./compose/staging/.env
-          cp ./compose/production/configs ./compose/staging/configs
+          cp -r ./compose/production/configs ./compose/staging/configs
 
           git add ./compose/staging/.env
           git add ./compose/staging/configs
