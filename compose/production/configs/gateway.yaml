@@ -2,7 +2,7 @@ port: 8080
 
 clients:
   auth:
-    url: http://auth:8080
+    url: auth:8080
   core:
     url: http://core:8080
 
