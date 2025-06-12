@@ -55,4 +55,4 @@ data:
         url: http://localhost:8080
 
     logger:
-      mode: info
+      mode: production

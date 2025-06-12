@@ -8,3 +8,6 @@ queue_credentials:
   urls:
     - kafka:9092
   topic: send-email-events
+
+logger:
+  mode: staging
