@@ -31,6 +31,14 @@ spec:
             limits:
               memory: '64MB'
               cpu: '0.2'
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
       volumes:
         - name: 'config-volume'
           configMap:
