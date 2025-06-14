@@ -10,4 +10,4 @@ queue_credentials:
   topic: send-email-events
 
 logger:
-  mode: staging
+  mode: production
