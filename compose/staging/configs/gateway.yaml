@@ -10,3 +10,5 @@ public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwOeFttt1KsCR/Ae/DBCm3W9uHVmL4
 
 logger:
   mode: production
+
+otel_collector_url: http://otel-collector:4317

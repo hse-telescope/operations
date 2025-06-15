@@ -69,8 +69,8 @@ services:
   prometheus:
     image: prom/prometheus
     hostname: prometheus
-    ports:
-      - '9090:9090'
+    # ports:
+    #   - '9090:9090'
     volumes:
       - ./configs/prometheus.yaml:/etc/prometheus/prometheus.yml
     depends_on:
