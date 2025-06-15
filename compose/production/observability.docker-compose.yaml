@@ -29,11 +29,12 @@ services:
 
   loki:
     image: grafana/loki:latest
-    # command: -config.file=/etc/loki/local-config.yaml
-    # volumes:
-    #   - ./configs/loki.yaml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/loki.yaml
+    volumes:
+      - ./configs/loki.yaml:/etc/loki/loki.yaml
     networks:
       - telemetry
+
   jaeger:
     image: jaegertracing/all-in-one
     hostname: jaeger
