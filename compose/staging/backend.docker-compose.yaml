@@ -74,3 +74,4 @@ services:
         condition: service_healthy
     networks:
       - emailer2queue
+      - telemetry

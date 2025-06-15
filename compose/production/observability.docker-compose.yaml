@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib
+    hostname: otel-collector
+    volumes:
+      - ./configs/otel-collector.yaml:/etc/otelcol-contrib/config.yaml
+    ports:
+      - '4317:4317'
+    networks:
+      - telemetry
+
   kafka-ui:
     image: provectuslabs/kafka-ui
     container_name: kafka-ui
@@ -15,4 +25,77 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - ui2queue
+      - telemetry
+
+  loki:
+    image: grafana/loki:latest
+    # command: -config.file=/etc/loki/local-config.yaml
+    # volumes:
+    #   - ./configs/loki.yaml:/etc/loki/local-config.yaml
+    networks:
+      - telemetry
+  jaeger:
+    image: jaegertracing/all-in-one
+    hostname: jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - '16686:16686'
+    networks:
+      - telemetry
+
+  auth-db-exporter:
+    image: prometheuscommunity/postgres-exporter
+    hostname: pg-db-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgres://user:password@auth-db:5432/db?sslmode=disable"
+    depends_on:
+      core-db:
+        condition: service_healthy
+    networks:
+      - telemetry
+
+  core-db-exporter:
+    image: prometheuscommunity/postgres-exporter
+    hostname: pg-db-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgres://user:password@core-db:5432/db?sslmode=disable"
+    depends_on:
+      core-db:
+        condition: service_healthy
+    networks:
+      - telemetry
+
+  prometheus:
+    image: prom/prometheus
+    hostname: prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./configs/prometheus.yaml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - auth-db-exporter
+      - core-db-exporter
+    networks:
+      - telemetry
+
+  grafana:
+    image: grafana/grafana
+    hostname: grafana
+    ports:
+      - '3000:3000'
+    environment:
+      - GF_SECURITY_ADMIN_USER=telescope
+      - GF_SECURITY_ADMIN_PASSWORD=telescope
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_Name=telescope
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - telemetry
+
+volumes:
+  grafana-data:
