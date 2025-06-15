@@ -15,7 +15,7 @@ services:
       - queue2storage
 
   kafka:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:7.2.14
     hostname: kafka
     environment:
       - KAFKA_BROKER_ID=1
