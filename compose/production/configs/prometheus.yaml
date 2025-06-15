@@ -12,4 +12,4 @@ scrape_configs:
       - targets: ["auth-db-exporter:9187"]
   - job_name: core-db-exporter
     static_configs:
-      - targets: ["auth-db-exporter:9187"]
+      - targets: ["core-db-exporter:9187"]
