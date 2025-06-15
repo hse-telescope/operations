@@ -16,3 +16,5 @@ clients:
 
 logger:
   mode: production
+
+otel_collector_url: http://otel-collector:4317
