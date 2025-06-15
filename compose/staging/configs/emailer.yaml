@@ -1,3 +1,5 @@
+port: 8080
+
 email_credentials:
   host: smtp.mail.ru
   port: 587
