@@ -9,10 +9,6 @@ exporters:
     endpoint: "http://loki:3100/otlp"
     tls:
       insecure: true
-  # prometheus:
-  #   endpoint: http://prometheus:9090/api/v1/otlp
-  #   tls:
-  #     insecure: true
   otlp:
     endpoint: jaeger:4317
     tls:
@@ -27,10 +23,6 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [otlp]
-    # metrics:
-    #   receivers: [otlp]
-    #   processors: [batch]
-    #   exporters: [prometheus]
     logs:
       receivers: [otlp]
       processors: [batch]
